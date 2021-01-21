@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>User Login</title>
+  </head>
+  <body>
+    Username:
+    <input type="text" id="username" /><br />
+    Password :
+    <input type="password" id="password" /><br />
+    <input type="button" value="Submit" id="submit" />
+  </body>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+  <script>
+    jQuery(document).ready(function ($) {
+      var email, pass;
+      $("#submit").click(function () {
+        username = $("#username").val();
+        password = $("#password").val();
+$.post("/login", { username: username, password: password }, function (
+          data
+        ) {
+          if (data === "success") {
+            window.location.href = "/";
+          }
+        });
+      });
+    });
+  </script>
+</html>
